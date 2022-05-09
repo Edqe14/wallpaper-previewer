@@ -1,7 +1,8 @@
+import { sha1 } from 'object-hash';
 import { GHResponse, Item } from '../types';
 
-const transformResponse = ({ sha: id, name, size, html_url: source, download_url: url }: GHResponse, repository: [string, string]): Item => ({
-  id,
+const transformResponse = ({ sha, name, size, html_url: source, download_url: url }: GHResponse, repository: [string, string]): Item => ({
+  id: sha1(name + sha),
   name,
   repository,
   size,

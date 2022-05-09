@@ -23,8 +23,8 @@ const store = createStore(
   withEntities<Item>()
 );
 
+export const items$ = store.pipe(selectAllEntities());
 export const theme$ = store.pipe(select(({ theme }) => theme));
-
 export const sourceLinks$ = store
   .pipe(select(({ sources }) => sources))
   .pipe(switchMap((value) => [value.map(([owner, repo, ...path]) => `https://api.github.com/repos/${owner}/${repo}/contents/${path.join('/')}`)]));
@@ -40,6 +40,7 @@ sourceLinks$.subscribe(async (value) => {
   store.update(setProp('isLoading', false), setEntities(items));
 });
 
-export const items$ = store.pipe(selectAllEntities());
+export const setTheme = (theme: 'light' | 'dark') => store.update(setProp('theme', theme));
+export const toggleTheme = () => setTheme(store.getValue().theme === 'dark' ? 'light' : 'dark');
 
 export default store;

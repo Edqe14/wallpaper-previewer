@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 body {
-  @apply bg-slate-800 text-gray-50;
+  @apply bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50;
+}
+
+.scrollbar-track-y {
+  @apply rounded;
 }

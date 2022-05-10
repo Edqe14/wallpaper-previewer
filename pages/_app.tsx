@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       <Links />
 
-      <Script src="./js/theme.js" strategy="beforeInteractive" />
+      <Script src="/js/theme.js" strategy="beforeInteractive" />
 
       <Component {...pageProps} />
     </>

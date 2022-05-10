@@ -16,7 +16,7 @@ const Home = () => {
 
     if (el) {
       const scrollbar = Scrollbar.init(el, {
-        wheelEventTarget: window
+        delegateTo: window
       });
 
       return () => scrollbar.destroy();

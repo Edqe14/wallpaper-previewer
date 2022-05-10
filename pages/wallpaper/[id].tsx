@@ -3,6 +3,7 @@ import { useObservable } from '@ngneat/use-observable';
 import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { BiLinkExternal, BiMemoryCard } from 'react-icons/bi';
+import { saveAs } from 'file-saver';
 import Container from '@/components/Container';
 import { items$ } from '@/lib/store';
 import NotFound from '@/components/NotFound';
@@ -27,13 +28,9 @@ const Wallpaper = () => {
 
   if (!item) return <NotFound />;
 
-  const download = () => {
-    const el = document.createElement('a');
-    el.setAttribute('href', item.url);
-    el.setAttribute('download', item.name);
-    el.setAttribute('rel', 'noopener noreferrer nofollow');
-
-    el.click();
+  const download = async () => {
+    const blob = await fetch(item.url).then((res) => res.blob());
+    saveAs(blob, item.name);
   };
 
   return (

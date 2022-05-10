@@ -1,31 +1,23 @@
 import '../styles/globals.css';
 import type { AppProps } from 'next/app';
-import { useObservable } from '@ngneat/use-observable';
 import { useEffect } from 'react';
+import Script from 'next/script';
 import Head from '@/components/Head';
-import { setTheme, theme$ } from '@/lib/store';
+import { setTheme } from '@/lib/store';
 import Links from '@/components/Links';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [theme] = useObservable(theme$);
-
   useEffect(() => {
-    setTheme(localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light');
+    setTheme(document.querySelector('html')?.classList.contains('dark') ? 'dark' : 'light');
   }, []);
-
-  useEffect(() => {
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [theme]);
 
   return (
     <>
       <Head />
 
       <Links />
+
+      <Script src="./js/theme.js" strategy="beforeInteractive" />
 
       <Component {...pageProps} />
     </>

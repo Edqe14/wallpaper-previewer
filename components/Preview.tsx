@@ -2,7 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Item } from '@/lib/types';
 
-const BLUR_DATA = [
+export const BLUR_DATA = [
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAMAAADNLv/0AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAK5QTFRFXGVuW11nVlBcUEZRTUBMUUBNWUdVYFZjZWlzaniAXGBqWlJeU0NPSjlERjVATDRCWTtLZU1db2h1dn+JXVllWUdWTzZFRC86QC03SC06WTNEa0VZeWZ3goORXFRhVkBPSi89PSk0OiszRSs4Wi9CckBWg2J3i4SVW1NfUz1MRCw5NycwNSoxQSs3WC5BdD9WiGF3kISWUD1LPys3MSYvLygwOyo1VS0/imJ4kYWYi/j0FgAAAElJREFUeJwFwQMCwDAQALCb0dm21Rn//9gSAIKkaIbleAFEJMmKqumGCZbtuJ4fhFEMSZrlRVnVTQtdP4zTvOB1A7Qf53U/+P1+lXoGsCAeJSEAAAAASUVORK5CYII=',
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAMAAADNLv/0AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAJ9QTFRFhoSKjIqOlJGUm5eZoZydpqChp6GioJuclpKUj4uOcG5zdXJ2end6fXh8gHp8g31/hX+AgHt9eXV4dHF1VFJVV1VYWldaWlZZWlVXXFZZXlhaW1daV1RYU1JVODU3Ojg6PDk7Ozc6OTU3OjY4Ojc5ODY5NjU4JiQkJyUmKSYnKCUmJSIkJSEjJSMlGxkZHRsaHxwcHhsbGRcYGhkZHBoa8h1JowAAAElJREFUeJwFwQcCQDAMAMDYe+9NbZWi/P9t7gAEUZIVVdMNMC3bcT0/CCOIkzTLi7KqG2i7fiBknOYF1m0/6EkREdh1P4xz/n4/lKwGnPHjYiIAAAAASUVORK5CYII=',
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAMAAADNLv/0AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAALRQTFRFyr+00LKt2qin5Kam6amo6a2q6LKu5ry25c3D5drOn6ihqaOgvKOiz6en2a2r27Gv2raz2L6518nB1dDIboeGfIqLlJKVrJ2fu6Wnv6msvq6wvLS0urq4t727R2NqVWtyand+gYSMj42YlJGflJajlJylkqOoj6epOExZQlJgUV1rYGl5a3GGb3aQb3yUcIaWb5GZbZmaNj5QPENVRUtfTlRsU1x6VmKFV2uJWHmLV4mOVZORMl5dzwAAAEhJREFUeJwFwYMBwAAMALDOtm3b+v+vJQAIiuEESdEMsBwviJKsqBrohmnZjuv5AYRRnKRZXpQV1E3b9cM4zQus236c1/283w+XSwbru0thhAAAAABJRU5ErkJggg==',
@@ -15,7 +15,7 @@ const BLUR_DATA = [
 
 const Preview = ({ id, url }: Item) => (
   <Link href={`/wallpaper/${id}`}>
-    <span className="flex rounded-none hover:rounded-lg overflow-hidden transition-all duration-300 ease-in-out">
+    <span className="flex rounded-none hover:rounded-lg hover:drop-shadow-lg overflow-hidden transition-all duration-300 ease-in-out">
       <Image
         className="cursor-pointer hover:scale-105 transition-transform duration-500 ease-in-out"
         key={id}

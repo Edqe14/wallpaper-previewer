@@ -40,7 +40,14 @@ sourceLinks$.subscribe(async (value) => {
   store.update(setProp('isLoading', false), setEntities(items));
 });
 
-export const setTheme = (theme: 'light' | 'dark') => store.update(setProp('theme', theme));
+export const setTheme = (theme: 'light' | 'dark') => {
+  try {
+    localStorage.theme = theme;
+  // eslint-disable-next-line no-empty
+  } catch {}
+
+  store.update(setProp('theme', theme));
+};
 export const toggleTheme = () => setTheme(store.getValue().theme === 'dark' ? 'light' : 'dark');
 
 export default store;

@@ -25,11 +25,11 @@ const Home = () => {
 
   return (
     <Container>
-      <section className="pt-12 h-screen flex flex-col">
+      <section className="px-16 md:px-0 pt-12 h-screen flex flex-col">
         <h1 className="text-3xl font-semibold mb-8">Wallpapers</h1>
 
-        <section ref={galleryRef} className=" w-full overflow-y-auto pb-8 pr-4">
-          <section className="relative grid lg:grid-cols-2 gap-4">
+        <section ref={galleryRef} className="w-full overflow-y-auto pb-8 pr-4">
+          <section className="relative grid lg:grid-cols-2 gap-4 justify-center">
             {items.map((item) => (<Preview key={item.id} {...item} />))}
           </section>
         </section>

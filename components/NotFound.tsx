@@ -1,14 +1,10 @@
-import Router from 'next/router';
-import { AiOutlineArrowLeft } from 'react-icons/ai';
 import Container from './Container';
+import GoBack from './GoBack';
 
 const NotFound = () => (
   <Container>
     <section className="flex flex-col py-16">
-      <span onClick={() => Router.back()} className="flex items-center gap-2 cursor-pointer">
-        <AiOutlineArrowLeft className="text-lg" />
-        <p>Go back</p>
-      </span>
+      <GoBack />
     </section>
   </Container>
 );

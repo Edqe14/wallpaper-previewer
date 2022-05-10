@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from 'react';
+
 export interface Item {
   id: string;
   name: string;
@@ -25,3 +27,5 @@ export interface GHResponse {
   type: string;
   _links: Links;
 }
+
+export type Dispatcher<T> = Dispatch<SetStateAction<T>>;

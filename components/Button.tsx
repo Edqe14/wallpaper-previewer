@@ -13,7 +13,7 @@ const classNames: Record<Variant, string> = {
 const Button = ({ variant = 'primary', className: customClass, ...rest }: Props) => {
   const className = useMemo(() => [
     // base style
-    'px-6 py-2 cursor-pointer hover:rounded-md transition-all duration-300 ease-in-out font-medium',
+    'px-6 py-2 cursor-pointer hover:rounded-md transition-all duration-300 ease-in-out font-medium outline-none border-none',
     classNames[variant],
     customClass
   ].filter(Boolean).join(' '), [variant]);

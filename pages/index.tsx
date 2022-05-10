@@ -16,7 +16,8 @@ const Home = () => {
 
     if (el) {
       const scrollbar = Scrollbar.init(el, {
-        delegateTo: window
+        delegateTo: window,
+        alwaysShowTracks: true
       });
 
       return () => scrollbar.destroy();
@@ -25,7 +26,7 @@ const Home = () => {
 
   return (
     <Container>
-      <section className="px-16 md:px-0 pt-12 h-screen flex flex-col">
+      <section className="px-8 md:px-0 pt-8 h-screen flex flex-col">
         <h1 className="text-3xl font-semibold mb-8">Wallpapers</h1>
 
         <section ref={galleryRef} className="w-full overflow-y-auto pb-8 pr-4">

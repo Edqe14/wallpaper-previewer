@@ -36,7 +36,7 @@ const Wallpaper = () => {
   return (
     <Container>
       <section className="py-8 px-8 md:px-24 lg:px-32 h-full flex flex-col items-center">
-        <section className="self-start mb-4">
+        <section className="self-start mb-6 mt-2">
           <GoBack />
         </section>
 

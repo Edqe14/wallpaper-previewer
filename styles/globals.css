@@ -7,5 +7,12 @@ body {
 }
 
 .scrollbar-track-y {
+  background-color: rgb(226 232 240 / 0.50) !important;
+  width: 4px !important;
+
   @apply rounded;
+}
+
+.scrollbar-thumb-y {
+  width: 4px !important;
 }

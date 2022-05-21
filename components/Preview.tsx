@@ -13,9 +13,9 @@ export const BLUR_DATA = [
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAGCAMAAADNLv/0AAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAALFQTFRFXE1NalZVemBefGJgbllbW05STEZLQT5EOzk/Ozg+VkpLZ1RUeWBefmNhc11dYlNWUkpPRkJIPjxCOzo/TkZIXlBQb1pZdV5dbllZYVJVVEtQSERKPz5EOTlARUBEUEdKXU9QY1FSX05QV0pNTkZLREFHOzpCNDU9PjxAT0VJVEdJUURHS0FFRD5DPTtCNTY9LzE5OTg8Pzs/SD9DTkJFTEBCRTs/Pjg9NzU8MTE5LS821mcnvQAAAElJREFUeJwFwYMBwEAQALCrbetr29h/sCYAGE6QFM2wHPCCKMmKqukGmJbtuJ4fhBGgOEmzvCirGhrUdv0wTvMC67Yf53U/7/cDlbwGzs+ZjzIAAAAASUVORK5CYII=',
 ];
 
-const Preview = ({ id, url }: Item) => (
+const Preview = ({ id, url, onClick }: Item) => (
   <Link href={`/wallpaper/${id}`}>
-    <span className="flex rounded-none hover:rounded-lg hover:drop-shadow-lg overflow-hidden transition-all duration-300 ease-in-out">
+    <span className="flex rounded-none hover:rounded-lg hover:drop-shadow-lg overflow-hidden transition-all duration-300 ease-in-out" onClick={onClick}>
       <Image
         className="cursor-pointer hover:scale-110 transition-transform duration-500 ease-in-out"
         key={id}

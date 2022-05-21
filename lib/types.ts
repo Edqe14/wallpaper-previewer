@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from 'react';
+import { Dispatch, MouseEventHandler, SetStateAction } from 'react';
 
 export interface Item {
   id: string;
@@ -7,6 +7,7 @@ export interface Item {
   source: string;
   size: number;
   repository: [string, string];
+  onClick?: MouseEventHandler<HTMLSpanElement>;
 }
 
 export interface Links {

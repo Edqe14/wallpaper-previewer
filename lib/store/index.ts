@@ -8,6 +8,7 @@ export interface StoreProps {
   theme: 'light' | 'dark';
   isLoading: boolean;
   sources: string[][];
+  scrollTop: number;
 }
 
 const store = createStore(
@@ -18,13 +19,15 @@ const store = createStore(
     sources: [
       //   owner           repo      ...path
       ['kitsunebishi', 'Wallpapers', 'images'],
-    ]
+    ],
+    scrollTop: 0
   }),
   withEntities<Item>()
 );
 
 export const items$ = store.pipe(selectAllEntities());
 export const theme$ = store.pipe(select(({ theme }) => theme));
+export const scrollTop$ = store.pipe(select(({ scrollTop }) => scrollTop));
 export const sourceLinks$ = store
   .pipe(select(({ sources }) => sources))
   .pipe(switchMap((value) => [value.map(([owner, repo, ...path]) => `https://api.github.com/repos/${owner}/${repo}/contents/${path.join('/')}`)]));
@@ -39,6 +42,8 @@ sourceLinks$.subscribe(async (value) => {
 
   store.update(setProp('isLoading', false), setEntities(items));
 });
+
+export const setScrollTop = (value: number) => store.update(setProp('scrollTop', value));
 
 export const setTheme = (theme: 'light' | 'dark') => {
   window.localStorage.setItem('theme', theme);

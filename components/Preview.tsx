@@ -14,19 +14,21 @@ export const BLUR_DATA = [
 ];
 
 const Preview = ({ id, url, onClick }: Item) => (
-  <Link href={`/wallpaper/${id}`}>
-    <span className="flex rounded-none hover:rounded-lg hover:drop-shadow-lg overflow-hidden transition-all duration-300 ease-in-out" onClick={onClick}>
-      <Image
-        className="cursor-pointer hover:scale-110 transition-transform duration-500 ease-in-out"
-        key={id}
-        src={url}
-        objectFit="cover"
-        width={640}
-        height={360}
-        blurDataURL={BLUR_DATA[Math.floor(Math.random() * BLUR_DATA.length)]}
-        placeholder="blur"
-      />
-    </span>
+  <Link href={`/wallpaper/${id}`} passHref>
+    <a>
+      <span className="flex rounded-none hover:rounded-lg hover:drop-shadow-lg overflow-hidden transition-all duration-300 ease-in-out" onClick={onClick}>
+        <Image
+          className="cursor-pointer hover:scale-110 transition-transform duration-500 ease-in-out"
+          key={id}
+          src={url}
+          objectFit="cover"
+          width={640}
+          height={360}
+          blurDataURL={BLUR_DATA[Math.floor(Math.random() * BLUR_DATA.length)]}
+          placeholder="blur"
+        />
+      </span>
+    </a>
   </Link>
 );
 

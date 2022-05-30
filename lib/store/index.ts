@@ -2,7 +2,8 @@ import { createStore, select, setProp, withProps } from '@ngneat/elf';
 import { selectAllEntities, setEntities, withEntities } from '@ngneat/elf-entities';
 import { switchMap } from 'rxjs/operators';
 import { GHResponse, Item } from '@/lib/types';
-import transformResponse from '../utils/transformResponse';
+import transformResponse from '@/lib/utils/transformResponse';
+import shuffle from '@/lib/utils/shuffle';
 
 export interface StoreProps {
   theme: 'light' | 'dark';
@@ -19,6 +20,9 @@ const store = createStore(
     sources: [
       //   owner           repo      ...path
       ['kitsunebishi', 'Wallpapers', 'images'],
+      ['Edqe14', 'wallpapers', 'genshin'],
+      ['Edqe14', 'wallpapers', 'hololive'],
+      ['Edqe14', 'wallpapers', 'misc'],
     ],
     scrollTop: 0
   }),
@@ -36,9 +40,9 @@ sourceLinks$.subscribe(async (value) => {
   store.update(setProp('isLoading', true));
 
   const res = await Promise.all(value.map((url) => fetch(url).then<GHResponse[]>((resp) => resp.json())));
-  const items = res
+  const items = shuffle(res
     .map((v, i) => v.map((resp) => transformResponse(resp, store.getValue().sources[i].slice(0, 2) as [string, string])))
-    .flat();
+    .flat());
 
   store.update(setProp('isLoading', false), setEntities(items));
 });

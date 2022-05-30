@@ -3,6 +3,7 @@ import { useObservable } from '@ngneat/use-observable';
 import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import { BiLinkExternal, BiMemoryCard } from 'react-icons/bi';
+import { GiSaucepan } from 'react-icons/gi';
 import { saveAs } from 'file-saver';
 import Container from '@/components/Container';
 import { items$ } from '@/lib/store';
@@ -96,6 +97,11 @@ const Wallpaper = () => {
               <a href={item.source} target="_blank" rel="noopener noreferrer nofollow" className={iconsRowClassName}>
                 <BiLinkExternal className={iconClassName} />
                 <span className="font-medium">Source</span>
+              </a>
+
+              <a href={`https://saucenao.com/search.php?url=${encodeURIComponent(item.url)}`} target="_blank" rel="noopener noreferrer nofollow" className={iconsRowClassName}>
+                <GiSaucepan className={iconClassName} />
+                <span className="font-medium">SauceNAO</span>
               </a>
             </section>
 
